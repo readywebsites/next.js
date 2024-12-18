@@ -2,16 +2,20 @@
 
 import { createContext, useContext } from "react";
 
-const footerContex = createContext(null);
+// Create the context
+const FooterContext = createContext(null);
 
-const FooterContexProvider = ({ value, children }) => {
+// Provider Component
+const FooterContextProvider = ({ value, children }) => {
   return (
-    <footerContex.Provider value={value}>{children}</footerContex.Provider>
+    <FooterContext.Provider value={value}>{children}</FooterContext.Provider>
   );
 };
 
-export const useFooterContex = () => {
-  const value = useContext(footerContex);
+// Hook to use the context
+export const useFooterContext = () => {
+  const value = useContext(FooterContext);
   return value;
 };
-export default FooterContexProvider;
+
+export default FooterContextProvider;

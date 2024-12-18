@@ -2,16 +2,20 @@
 
 import { createContext, useContext } from "react";
 
-const headerContex = createContext(null);
+// Create the context
+const HeaderContext = createContext(null);
 
-const HeaderContex = ({ value, children }) => {
+// Provider Component
+const HeaderContextProvider = ({ value, children }) => {
   return (
-    <headerContex.Provider value={value}>{children}</headerContex.Provider>
+    <HeaderContext.Provider value={value}>{children}</HeaderContext.Provider>
   );
 };
 
-export const useHeaderContex = () => {
-  const value = useContext(headerContex);
+// Hook to use the context
+export const useHeaderContext = () => {
+  const value = useContext(HeaderContext);
   return value;
 };
-export default HeaderContex;
+
+export default HeaderContextProvider;
