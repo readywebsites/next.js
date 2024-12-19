@@ -21,10 +21,34 @@
         "name": "next"
       }
     ],
-    "baseUrl": ".", // Add this line
-    "paths": {      // Add this line
-      "@/components/*": ["src/components/*"]
-    }
+    "baseUrl": ".",
+    "paths": {
+      "@/components/*": [
+        "src/components/*"
+      ],
+      "@/libs/*": [
+        "src/libs/*"
+      ],
+      "@/providers/*": [
+        "src/providers/*"
+      ],
+      "@/styles/*": [
+        "src/styles/*"
+      ],
+      "@/utils/*": [
+        "src/utils/*"
+      ],
+      "@/hooks/*": [
+        "src/hooks/*"
+      ],
+      "@/pages/*": [
+        "src/pages/*"
+      ],
+      "@/assets/*": [
+        "src/assets/*"
+      ]
+    },
+    "target": "ES2017"
   },
   "include": [
     "next-env.d.ts",

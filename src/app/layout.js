@@ -5,12 +5,15 @@ import "./globals.css";
 import "@/assets/css/responsive.css";
 import Script from "next/script";
 import { Suspense } from "react";
+import HeaderContextProvider from "@/providers/HeaderContex"; // Updated to reflect the correct path
+
 const open_sans = Open_Sans({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700", "800"],
   display: "swap",
   variable: "--ltn__body-font",
 });
+
 const rajdhani = Rajdhani({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
@@ -24,6 +27,11 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  const headerValue = {
+    title: "My Header Title", // Example value; adjust as necessary
+    // Add any other context values as needed
+  };
+
   return (
     <html
       lang="en"
@@ -31,15 +39,16 @@ export default function RootLayout({ children }) {
       className={`${rajdhani.variable} ${open_sans.variable}`}
     >
       <body className={open_sans.className}>
-        <Suspense fallback={<div></div>}>
-          {children}
-
-          <Script src="/plugins.js" />
-          <Script
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeeHDCOXmUMja1CFg96RbtyKgx381yoBU"
-            async
-          />
-        </Suspense>
+        <HeaderContextProvider value={headerValue}>
+          <Suspense fallback={<div></div>}>
+            {children}
+            <Script src="/plugins.js" />
+            <Script
+              src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeeHDCOXmUMja1CFg96RbtyKgx381yoBU"
+              async
+            />
+          </Suspense>
+        </HeaderContextProvider>
       </body>
     </html>
   );

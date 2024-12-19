@@ -1,3 +1,5 @@
+// app/page.js
+
 import IndexMain from "@/components/layout/main/IndexMain";
 import PageWrapper from "@/components/shared/wrappers/PageWrapper";
 
