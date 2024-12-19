@@ -4,7 +4,7 @@ const logoImage1 = "/img/logo.png";
 const logoImage2 = "/img/logo-2.png";
 
 import Link from "next/link";
-import { useHeaderContex } from "@/providers/HeaderContex";
+import { useHeaderContext } from "@/providers/HeaderContex";
 
 const Logo = ({ sticky }) => {
   const {
@@ -14,7 +14,7 @@ const Logo = ({ sticky }) => {
     navBg,
     isHeaderSupport,
     isTextWhite,
-  } = useHeaderContex();
+  } = useHeaderContext();
 
   return (
     <div className={sticky ? "sticky-logo" : "col"}>

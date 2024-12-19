@@ -1,10 +1,10 @@
 "use client";
-import { useHeaderContex } from "@/providers/HeaderContex";
+import { useHeaderContext } from "@/providers/HeaderContex";
 import Link from "next/link";
 import React from "react";
 
 const ButtonOpenMobileMenu = () => {
-  const { headerStyle, headerSize } = useHeaderContex();
+  const { headerStyle, headerSize } = useHeaderContext();
   return (
     <div
       className={`mobile-menu-toggle d-xl-none  ${

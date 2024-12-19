@@ -1,7 +1,7 @@
 "use client";
 import ButtonOpenMobileMenu from "@/components/shared/buttons/ButtonOpenMobileMenu";
 import { useCartContext } from "@/providers/CartContext";
-import { useHeaderContex } from "@/providers/HeaderContex";
+import { useHeaderContext } from "@/providers/HeaderContex";
 import Link from "next/link";
 import React from "react";
 import HeaderCurrency from "./HeaderCurrency";
@@ -9,7 +9,7 @@ import countTotalPrice from "@/libs/countTotalPrice";
 import HeaderCartShow from "./HeaderCartShow";
 
 const HeaderRight = () => {
-  const { headerStyle } = useHeaderContex();
+  const { headerStyle } = useHeaderContext();
   const { cartProducts } = useCartContext();
   const totalProduct = cartProducts?.length;
   const totalPrice = countTotalPrice(cartProducts);

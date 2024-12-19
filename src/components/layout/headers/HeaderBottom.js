@@ -1,10 +1,10 @@
 "use client";
 import React from "react";
 import Navbar from "./Navbar";
-import { useHeaderContex } from "@/providers/HeaderContex";
+import { useHeaderContext } from "@/providers/HeaderContex";
 
 const HeaderBottom = () => {
-  const { navBg } = useHeaderContex();
+  const { navBg } = useHeaderContext();
   return (
     <div
       className={`header-bottom-area ltn__border-top ltn__header-sticky ${

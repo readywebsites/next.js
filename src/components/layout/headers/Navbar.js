@@ -17,12 +17,12 @@ import CommonDropdown from "./CommonDropdown";
 import PagesDropdown from "./PagesDropdown";
 import NavItem from "./NavItem";
 import Link from "next/link";
-import { useHeaderContex } from "@/providers/HeaderContex";
+import { useHeaderContext } from "@/providers/HeaderContex";
 import Logo from "./Logo";
 
 const Navbar = () => {
   const { headerStyle, headerSize, isNavbarAppointmentBtn, isTextWhite } =
-    useHeaderContex();
+    useHeaderContext();
   const navItemsRaw = [
     {
       name: "Home",

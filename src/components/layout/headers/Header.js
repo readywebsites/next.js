@@ -5,7 +5,7 @@ import Navbar from "./Navbar";
 import HeaderRight from "./HeaderRight";
 import MobileMenu from "./MobileMenu";
 import HeaderCart from "./HeaderCart";
-import { useHeaderContex } from "@/providers/HeaderContex";
+import { useHeaderContext } from "@/providers/HeaderContex";
 import ButtonOpenMobileMenu from "@/components/shared/buttons/ButtonOpenMobileMenu";
 import HeaderSearch from "./HeaderSearch";
 import HeaderRight2 from "./HeaderRight2";
@@ -21,7 +21,7 @@ const Header = () => {
     isNotTransparent,
     isTextWhite,
     isStickyOnMobile,
-  } = useHeaderContex();
+  } = useHeaderContext();
   return (
     <>
       <header

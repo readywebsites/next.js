@@ -1,12 +1,12 @@
 import countTotalPrice from "@/libs/countTotalPrice";
 import modifyAmount from "@/libs/modifyAmount";
 import { useCartContext } from "@/providers/CartContext";
-import { useHeaderContex } from "@/providers/HeaderContex";
+import { useHeaderContext } from "@/providers/HeaderContex";
 import Link from "next/link";
 import React from "react";
 
 const HeaderCartShow = () => {
-  const { headerStyle } = useHeaderContex();
+  const { headerStyle } = useHeaderContext();
   const { cartProducts } = useCartContext();
   const totalProduct = cartProducts?.length;
   const totalPrice = countTotalPrice(cartProducts);

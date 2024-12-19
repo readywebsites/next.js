@@ -1,10 +1,10 @@
 "use client";
-import { useHeaderContex } from "@/providers/HeaderContex";
+import { useHeaderContext } from "@/providers/HeaderContex";
 import Link from "next/link";
 import React from "react";
 
 const HeaderTop = () => {
-  const { headerStyle, headerSize, headerTopBg } = useHeaderContex();
+  const { headerStyle, headerSize, headerTopBg } = useHeaderContext();
   return (
     <div
       className={`ltn__header-top-area ${
