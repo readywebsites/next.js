@@ -23,4 +23,5 @@ export const useHeaderContext = () => {
   return context;
 };
 
+// Export the provider
 export default HeaderContextProvider;
