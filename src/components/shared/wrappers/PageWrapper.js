@@ -1,7 +1,7 @@
 "use client";
 import { useEffect } from "react";
 import Header from "@/components/layout/headers/Header";
-import HeaderContext from "@/providers/HeaderContext";
+import { HeaderContextProvider } from "@/providers/HeaderContext"; // Change to import the provider
 import CartContextProvider from "@/providers/CartContext";
 import Footer from "@/components/layout/footers/Footer";
 import FooterContexProvider from "@/providers/FooterContext";
@@ -32,6 +32,7 @@ const PageWrapper = ({
   useEffect(() => {
     main();
   }, []);
+  
   return (
     <div className="body-wrapper">
       {isCommingSoon ? (
@@ -39,7 +40,7 @@ const PageWrapper = ({
       ) : (
         <CartContextProvider>
           <WishlistContextProvider>
-            <HeaderContext
+            <HeaderContextProvider // Use the provider instead of the context
               value={{
                 headerStyle,
                 headerSize,
@@ -57,7 +58,7 @@ const PageWrapper = ({
               }}
             >
               <Header />
-            </HeaderContext>
+            </HeaderContextProvider>
 
             <ProductContext>{children}</ProductContext>
           </WishlistContextProvider>

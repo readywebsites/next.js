@@ -4,8 +4,8 @@ import "@/assets/css/plugins.css";
 import "./globals.css";
 import "@/assets/css/responsive.css";
 import Script from "next/script";
-import { Suspense } from "react";
-import HeaderContextProvider from "@/providers/HeaderContext"; // Correct file name
+import { Suspense } from "react"; 
+import { HeaderContextProvider } from "@/providers/HeaderContext"; // Ensure this is correct
 
 const open_sans = Open_Sans({
   subsets: ["latin"],
@@ -27,9 +27,15 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  // Define your header context values here
   const headerValue = {
-    title: "My Header Title", // Example value; customize as needed
-    // Add other context values here
+    headerStyle: 1, // Example value; customize as needed
+    headerSize: "lg", // Example value; customize as needed
+    isNotHeaderTop: false, // Example value; customize as needed
+    isNotHeaderRight: false, // Example value; customize as needed
+    isNotTransparent: false, // Example value; customize as needed
+    isTextWhite: false, // Example value; customize as needed
+    isStickyOnMobile: false, // Example value; customize as needed
   };
 
   return (

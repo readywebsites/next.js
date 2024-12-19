@@ -1,45 +1,26 @@
 "use client";
 
-import { useFooterContex } from "@/providers/FooterContext";
+import { createContext, useContext } from "react";
 
-import Copyright2 from "./Copyright2";
-import FooterAbout2 from "./FooterAbout2";
-import FooterCompany from "./FooterCompany";
-import FooterServices2 from "./FooterServices2";
-import FooterCustomerCare from "./FooterCustomerCare";
-import FooterNewsletter from "./FooterNewsletter";
+// Create the context
+const FooterContext = createContext(null);
 
-const Footer = () => {
-  const {  footerBg } = useFooterContex();
+// Provider Component
+export const FooterContextProvider = ({ value, children }) => {
   return (
-    <footer
-        className={`ltn__footer-area `}
-      >
-        <div
-          className={`footer-top-area   ${
-            footerBg === "dark"
-                ? "section-bg-2 plr--5"
-                : "section-bg-1 plr--5 "
-              
-          }`}
-       
-        >
-          <div className={ "container-fluid" }>
-            <div className="row">
-         
-                  <FooterAbout2 />
-                  <FooterCompany />
-                  <FooterServices2 />
-                  <FooterCustomerCare />
-                  <FooterNewsletter />
-              
-             
-            </div>
-          </div>
-        </div>
-        <Copyright2 />
-      </footer>
+    <FooterContext.Provider value={value}>
+      {children}
+    </FooterContext.Provider>
   );
 };
 
-export default Footer;
+// Hook to use the context
+export const useFooterContex = () => {  // Ensure the name is correct
+  const context = useContext(FooterContext);
+  if (!context) {
+    throw new Error("useFooterContex must be used within a FooterContextProvider");
+  }
+  return context;
+};
+
+export default FooterContextProvider;

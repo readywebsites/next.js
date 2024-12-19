@@ -11,23 +11,26 @@ import { useCommonContext } from "@/providers/CommonContext";
 import moment from "moment";
 import countCommentLength from "@/libs/countCommentLength";
 import modifyNumber from "@/libs/modifyNumber";
-const ProductDetailsRight = ({ product }) => {
-  // destructure current product
-  const { id, title, price, reviews, disc, size, color } = product;
-  // current Date
 
-  // hooks
+const ProductDetailsRight = ({ product }) => {
+  // Destructure current product
+  const { id, title, price, reviews, disc, size, color } = product;
+
+  // Hooks
   const value = useCommonContext();
   const { addProductToCart } = useCartContext();
   const { addProductToWishlist } = useWishlistContext();
-  // dom referance
+  
+  // DOM reference
   const inputRef = useRef(null);
-  // states
+  
+  // States
   const [quantity, setQuantity] = useState(1);
   const [currentColor, setCurrentColor] = useState(color);
   const [currentSize, setCurrentSize] = useState(size?.toLowerCase());
   const [purchaseDate, setPurchaseDate] = useState(null);
-  // varriables
+
+  // Variables
   const { type } = value ? value : {};
   const { netPrice } = countDiscount(price, disc);
   const netPriceModified = modifyAmount(netPrice);
@@ -46,65 +49,77 @@ const ProductDetailsRight = ({ product }) => {
     const currentDate = Date.now();
     const calanderFormat = moment(currentDate).format("YYYY-MM-DD");
     setPurchaseDate(calanderFormat);
+    
     const inputParent = inputRef.current;
-    const input = inputParent.querySelector("input");
+    const input = inputParent?.querySelector("input");
+    const increament = inputParent?.querySelector(".inc");
+    const decreament = inputParent?.querySelector(".dec");
 
-    setTimeout(() => {
-      const increament = inputParent.querySelector(".inc");
-      const decreament = inputParent.querySelector(".dec");
-      increament.addEventListener("click", () => {
-        setQuantity(parseInt(input.value));
-      });
-      decreament.addEventListener("click", () => {
-        setQuantity(parseInt(input.value));
-      });
-    }, 500);
+    const incrementHandler = () => {
+      setQuantity((prev) => prev + 1);
+    };
+    const decrementHandler = () => {
+      setQuantity((prev) => (prev > 1 ? prev - 1 : 1)); // Prevent going below 1
+    };
+
+    if (increament && decreament && input) {
+      increament.addEventListener("click", incrementHandler);
+      decreament.addEventListener("click", decrementHandler);
+    }
+
+    // Cleanup function to remove event listeners
+    return () => {
+      if (increament && decreament) {
+        increament.removeEventListener("click", incrementHandler);
+        decreament.removeEventListener("click", decrementHandler);
+      }
+    };
   }, []);
+
   return (
     <div className="modal-product-info shop-details-info pl-0" id="details">
-      {/* ratings */}
+      {/* Ratings */}
       <div className="product-ratting">
         <ul>
           <li>
             <Link href="#">
               <i className="fas fa-star"></i>
             </Link>
-          </li>{" "}
+          </li>
           <li>
             <Link href="#">
               <i className="fas fa-star"></i>
             </Link>
-          </li>{" "}
+          </li>
           <li>
             <Link href="#">
               <i className="fas fa-star"></i>
             </Link>
-          </li>{" "}
+          </li>
           <li>
             <Link href="#">
               <i className="fas fa-star-half-alt"></i>
             </Link>
-          </li>{" "}
+          </li>
           <li>
             <Link href="#">
               <i className="far fa-star"></i>
             </Link>
-          </li>{" "}
+          </li>
           <li className="review-total">
             <Link href="#"> ( {modifyNumber(reviewsLength)} Reviews )</Link>
           </li>
         </ul>
       </div>
-      {/* title */}
+      {/* Title */}
       <h3>{title}</h3>
-      {/* price */}
+      {/* Price */}
       <div className="product-price text-nowrap">
         <span>${netPriceModified}</span> <del>${priceModified}</del>
       </div>
-      {/* description */}
-
-      {/* category, availability */}
-      <div className={`modal-product-meta ltn__product-details-menu-1  `}>
+      {/* Description */}
+      {/* Category, Availability */}
+      <div className="modal-product-meta ltn__product-details-menu-1">
         <ul>
           <li
             onClick={() => {
@@ -121,26 +136,24 @@ const ProductDetailsRight = ({ product }) => {
           </li>
         </ul>
       </div>
-      {/* countdown */}
-
-      {/* add to cart */}
+      {/* Add to cart */}
       <div className="ltn__product-details-menu-2">
         <ul>
           <li>
             <div className="cart-plus-minus" ref={inputRef}>
               <input
                 onChange={(e) =>
-                  setQuantity(
-                    !parseInt(e.target.value) ? 1 : parseInt(e.target.value)
-                  )
+                  setQuantity(!parseInt(e.target.value) ? 1 : parseInt(e.target.value))
                 }
                 type="text"
                 value={quantity}
                 name="qtybutton"
                 className="cart-plus-minus-box"
               />
+              <button className="inc">+</button>
+              <button className="dec">-</button>
             </div>
-          </li>{" "}
+          </li>
           <li>
             <Link
               onClick={(e) => {
@@ -158,7 +171,7 @@ const ProductDetailsRight = ({ product }) => {
           </li>
         </ul>
       </div>
-      {/* add to wishlist and compare */}
+      {/* Add to wishlist and compare */}
       <div className="ltn__product-details-menu-3">
         <ul>
           <li>
@@ -175,7 +188,7 @@ const ProductDetailsRight = ({ product }) => {
             >
               <i className="far fa-heart"></i> <span>Add to Wishlist</span>
             </Link>
-          </li>{" "}
+          </li>
           <li>
             <Link
               href="#"
@@ -190,7 +203,7 @@ const ProductDetailsRight = ({ product }) => {
         </ul>
       </div>
       <hr />
-      {/* socials */}
+      {/* Socials */}
       <div className="ltn__social-media">
         <ul>
           <li>Share:</li>{" "}
@@ -216,7 +229,7 @@ const ProductDetailsRight = ({ product }) => {
           </li>
         </ul>
       </div>
-      {/* checkout image */}
+      {/* Checkout image */}
       {type ? (
         <>
           <hr />

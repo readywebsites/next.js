@@ -3,24 +3,22 @@
 import { createContext, useContext } from "react";
 
 // Create the context
-const HeaderContextt = createContext(null);
+const HeaderContext = createContext(null);
 
 // Provider Component
-const HeaderContexttProvider = ({ value, children }) => {
+export const HeaderContextProvider = ({ value, children }) => {
   return (
-    <HeaderContextt.Provider value={value}>
+    <HeaderContext.Provider value={value}>
       {children}
-    </HeaderContextt.Provider>
+    </HeaderContext.Provider>
   );
 };
 
 // Hook to use the context
-export const useHeaderContexttt = () => {
-  const context = useContext(HeaderContextt);
+export const useHeaderContext = () => {
+  const context = useContext(HeaderContext);
   if (!context) {
-    throw new Error("useHeaderContexttt must be used within a HeaderContexttProvider");
+    throw new Error("useHeaderContext must be used within a HeaderContextProvider");
   }
   return context;
 };
-
-export default HeaderContexttProvider;
