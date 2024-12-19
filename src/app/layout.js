@@ -5,7 +5,7 @@ import "./globals.css";
 import "@/assets/css/responsive.css";
 import Script from "next/script";
 import { Suspense } from "react";
-import HeaderContextProvider from "@/providers/HeaderContex"; // Correct file name
+import HeaderContextProvider from "@/providers/HeaderContext"; // Correct file name
 
 const open_sans = Open_Sans({
   subsets: ["latin"],
