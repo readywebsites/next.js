@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Navbar from "./Navbar";
-import { useHeaderContext } from "@/providers/HeaderContex";
+import { useHeaderContext } from "@/providers/HeaderContext";
 
 const HeaderBottom = () => {
   const { navBg } = useHeaderContext();

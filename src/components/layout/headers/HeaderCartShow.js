@@ -1,7 +1,7 @@
 import countTotalPrice from "@/libs/countTotalPrice";
 import modifyAmount from "@/libs/modifyAmount";
 import { useCartContext } from "@/providers/CartContext";
-import { useHeaderContext } from "@/providers/HeaderContex";
+import { useHeaderContext } from "@/providers/HeaderContext";
 import Link from "next/link";
 import React from "react";
 

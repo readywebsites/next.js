@@ -1,7 +1,7 @@
 "use client";
 import { useEffect } from "react";
 import Header from "@/components/layout/headers/Header";
-import HeaderContex from "@/providers/HeaderContex";
+import HeaderContext from "@/providers/HeaderContext";
 import CartContextProvider from "@/providers/CartContext";
 import Footer from "@/components/layout/footers/Footer";
 import FooterContexProvider from "@/providers/FooterContext";
@@ -39,7 +39,7 @@ const PageWrapper = ({
       ) : (
         <CartContextProvider>
           <WishlistContextProvider>
-            <HeaderContex
+            <HeaderContext
               value={{
                 headerStyle,
                 headerSize,
@@ -57,7 +57,7 @@ const PageWrapper = ({
               }}
             >
               <Header />
-            </HeaderContex>
+            </HeaderContext>
 
             <ProductContext>{children}</ProductContext>
           </WishlistContextProvider>

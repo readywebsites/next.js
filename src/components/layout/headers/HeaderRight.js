@@ -1,7 +1,7 @@
 "use client";
 import ButtonOpenMobileMenu from "@/components/shared/buttons/ButtonOpenMobileMenu";
 import { useCartContext } from "@/providers/CartContext";
-import { useHeaderContext } from "@/providers/HeaderContex";
+import { useHeaderContext } from "@/providers/HeaderContext";
 import Link from "next/link";
 import React from "react";
 import HeaderCurrency from "./HeaderCurrency";

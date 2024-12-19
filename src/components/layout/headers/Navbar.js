@@ -17,7 +17,7 @@ import CommonDropdown from "./CommonDropdown";
 import PagesDropdown from "./PagesDropdown";
 import NavItem from "./NavItem";
 import Link from "next/link";
-import { useHeaderContext } from "@/providers/HeaderContex";
+import { useHeaderContext } from "@/providers/HeaderContext";
 import Logo from "./Logo";
 
 const Navbar = () => {

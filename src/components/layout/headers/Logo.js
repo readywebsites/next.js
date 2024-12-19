@@ -4,7 +4,7 @@ const logoImage1 = "/img/logo.png";
 const logoImage2 = "/img/logo-2.png";
 
 import Link from "next/link";
-import { useHeaderContext } from "@/providers/HeaderContex";
+import { useHeaderContext } from "@/providers/HeaderContext";
 
 const Logo = ({ sticky }) => {
   const {

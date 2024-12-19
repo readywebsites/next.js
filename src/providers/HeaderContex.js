@@ -15,10 +15,10 @@ const HeaderContextProvider = ({ value, children }) => {
 };
 
 // Hook to use the context
-export const useHeaderContextt = () => {
+export const useHeaderContext = () => {
   const context = useContext(HeaderContext);
   if (!context) {
-    throw new Error("useHeaderContextt must be used within a HeaderContextProvider");
+    throw new Error("useHeaderContext must be used within a HeaderContextProvider");
   }
   return context;
 };

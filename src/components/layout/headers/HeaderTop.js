@@ -1,5 +1,5 @@
 "use client";
-import { useHeaderContext } from "@/providers/HeaderContex";
+import { useHeaderContext } from "@/providers/HeaderContext";
 import Link from "next/link";
 import React from "react";
 
